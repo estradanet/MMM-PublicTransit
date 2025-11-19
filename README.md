@@ -4,7 +4,8 @@ This [MagicMirror](https://magicmirror.builders/) module displays upcoming bus o
 
 ![Example of MMM-PublicTransit](Images/sample.png)
 
-
+## Breaking Changes
+Nov 19, 2025: The configuration variable `global_stop_id` has been renamed to `global_stop_ids` to support showing multiple stops.
 ## Use Case
 
 Use this module to see upcoming departures from a bus or train stop of interest.
@@ -41,8 +42,7 @@ curl  -H "Accept-Language:en" -H "apiKey:$API_KEY" "https://external.transitapp.
 ```
 If you don't see any results from the API response, the location you provided is not close to any stops in Transit's database. You may increase `LOCATION_PRECISION` up to 1500 meters to show more nearby stops. Also, make sure you are using the location of the bus/train stop of interest and not your location.
 
-From the JSON response, make a note of the `"global_stop_id"` of your stop. It will be formatted as `"ABC:12345"`. If you would like to monitor multiple stops, please use multiple instances of this module.
-
+From the JSON response, make a note of the `"global_stop_id"` of the stop(s) you would like to monitor. It will be formatted as `"ABC:12345"`.
 
 ### Install
 
@@ -63,7 +63,7 @@ To use this module, add it to the modules array in the `config/config.js` file:
         position: 'top_right',
         header: 'Your Stop Name',
         config: {
-            global_stop_id: 'abc:1234',
+            global_stop_ids: 'abc:1234',
             apiKey: ''
         }
     },
@@ -77,9 +77,9 @@ The terms and conditions of the Transit App API requires that the Transit Logo b
 
 | Option             | Description                                                                 | Default     |
 | ------------------ | --------------------------------------------------------------------------- | ----------- |
-| `global_stop_id` (required)  | The global stop ID from the Transit App API.                               | `""`        |
+| `global_stop_ids` (required)  | Comma separated list of global stop IDs from the Transit App API. If you need to display departures from only one stop, your configuration will look like this: `global_stop_ids: 'ABC:1234'`. To monitor multiple stations, separate the stations by a comma like this: `global_stop_ids: 'ABC:1234,XYZ:12345'`                              | `""`        |
 | `apiKey` (required)           | Your Transit App API key.                                                   | `""`        |
-| `showHeadSign`     | Show the head sign on the bus/train instead of the route name. Sometimes the eastbound and westbound routes have the same name (e.g., the New York LIRR), in which case enable this.                         | `false`     |
+| `showHeadSign`     | Show the head sign on the bus/train instead of the route name. Sometimes the eastbound and westbound routes have the same route name (e.g., the New York LIRR), in which case set this to `true`.                         | `false`     |
 | `logosize`         | Size of the Transit logo.                                                   | `"40px"`    |
 | `showlogo`         | Show or hide the transit logo (`true`, `false`)                                                   | `true`   |
 | `displayed_entries`| Number of bus times to display.                                             | `3`         |

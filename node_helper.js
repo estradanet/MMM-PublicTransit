@@ -15,7 +15,7 @@ module.exports = NodeHelper.create({
         // Build the URL with query parameters
         const baseUrl = 'https://external.transitapp.com/v3/public/stop_departures';
         const url = new URL(baseUrl);
-        url.searchParams.append('global_stop_id', payload.global_stop_id);
+        url.searchParams.append('global_stop_ids', payload.global_stop_ids);
         url.searchParams.append('remove_cancelled', 'true');
         
         // Make the API request

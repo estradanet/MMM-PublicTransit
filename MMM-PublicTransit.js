@@ -3,7 +3,7 @@ Module.register("MMM-PublicTransit", {
   defaults: {
     logosize: "40px",
     showlogo: true,
-    global_stop_id: "",
+    global_stop_ids: "",
     apiKey: "",
     displayed_entries: 3, // Number of bus times to display
     fontsize: "24px", // Font size for bus times
@@ -31,9 +31,9 @@ Module.register("MMM-PublicTransit", {
       { route_short_name: "Error", departure_time: Date.now()/1000 + 600 }
     ];
     
-    this.sendSocketNotification("FETCH_BUS_SCHEDULE", {apiKey:this.config.apiKey,global_stop_id:this.config.global_stop_id,showHeadSign:this.config.showHeadSign,activeHours:this.activeHours()})
+    this.sendSocketNotification("FETCH_BUS_SCHEDULE", {apiKey:this.config.apiKey,global_stop_ids:this.config.global_stop_ids,showHeadSign:this.config.showHeadSign,activeHours:this.activeHours()})
     //setInterval(() => this.sendSocketNotification("FETCH_BUS_SCHEDULE", payload), this.config.updateFrequency * 60 * 1000);
-    setInterval(() => this.sendSocketNotification("FETCH_BUS_SCHEDULE", {apiKey:this.config.apiKey,global_stop_id:this.config.global_stop_id,showHeadSign:this.config.showHeadSign,activeHours:this.activeHours()}), this.config.updateFrequency * 60 * 1000);
+    setInterval(() => this.sendSocketNotification("FETCH_BUS_SCHEDULE", {apiKey:this.config.apiKey,global_stop_ids:this.config.global_stop_ids,showHeadSign:this.config.showHeadSign,activeHours:this.activeHours()}), this.config.updateFrequency * 60 * 1000);
     setInterval(() => this.updateDom(), 30000)
   },
 
