@@ -44,17 +44,24 @@ module.exports = NodeHelper.create({
               route.itineraries.forEach(itinerary => {
                 if (itinerary.schedule_items && Array.isArray(itinerary.schedule_items)) {
                   itinerary.schedule_items.forEach(scheduleItem => {
-                    result.push({
-                      route_short_name: route.route_short_name,
-                      departure_time: scheduleItem.departure_time,
-                    });
+                      if (payload.showHeadSign) {
+                        result.push({
+                        route_short_name: itinerary.headsign,
+                        departure_time: scheduleItem.departure_time,
+                        });
+                      } else {
+                        result.push({
+                        route_short_name: route.route_short_name,
+                        departure_time: scheduleItem.departure_time,
+                        });
+                      }
                   });
                 }
               });
             }
           });
         }
-  
+
         // Sort the result by departure_time
         result.sort((a, b) => a.departure_time - b.departure_time);
         this.sendSocketNotification("UPDATE_BUS_SCHEDULE", result);

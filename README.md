@@ -79,6 +79,7 @@ The terms and conditions of the Transit App API requires that the Transit Logo b
 | ------------------ | --------------------------------------------------------------------------- | ----------- |
 | `global_stop_id` (required)  | The global stop ID from the Transit App API.                               | `""`        |
 | `apiKey` (required)           | Your Transit App API key.                                                   | `""`        |
+| `showHeadSign`     | Show the head sign on the bus/train instead of the route name. Sometimes the eastbound and westbound routes have the same name (e.g., the New York LIRR), in which case enable this.                         | `false`     |
 | `logosize`         | Size of the Transit logo.                                                   | `"40px"`    |
 | `showlogo`         | Show or hide the transit logo (`true`, `false`)                                                   | `true`   |
 | `displayed_entries`| Number of bus times to display.                                             | `3`         |
