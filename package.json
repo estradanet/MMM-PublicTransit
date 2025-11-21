@@ -13,8 +13,11 @@
     "url": "git+https://github.com/thariq-shanavas/MMM-PublicTransit.git"
   },
   "keywords": [
-    "Public Transport, Local Transit, Traffic"
-  ],
+    "MagicMirror",
+    "public transport",
+    "traffic",
+    "transit"
+    ],
   "author": "Thariq",
   "license": "MIT",
   "bugs": {
