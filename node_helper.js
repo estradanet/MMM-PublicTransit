@@ -1,5 +1,4 @@
 const NodeHelper = require("node_helper");
-const fetch = require("node-fetch"); // Ensure fetch is available
 const { URL } = require("url"); // Ensure URL is available
 
 module.exports = NodeHelper.create({

@@ -31,7 +31,6 @@ Before you begin, ensure you have:
 ```bash
 sudo apt update
 sudo apt install curl jq
-npm install node-fetch
 
 API_KEY=(Your Transit App API key)
 STATION_LATITUDE=(Latitude of your bus/train stop)
