@@ -50,7 +50,7 @@ module.exports = NodeHelper.create({
                         route_short_name: route.route_short_name, 
                         trip_headsign: itinerary.headsign,
                         departure_time: scheduleItem.departure_time,
-                        route_id: route.route_id
+                        route_id: route.real_time_route_id
                       });
 
                   });

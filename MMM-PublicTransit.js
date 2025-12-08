@@ -7,12 +7,12 @@ Module.register("MMM-PublicTransit", {
     displayed_entries: 3, // Number of bus times to display
     fontsize: "24px", // Font size for bus times
     logoLocation: "flex-end", // Logo alignment (flex-start, flex-end)
-    activeHoursStart: 6, // Active hours for the module (24-hour format)
+    activeHoursStart: 6,  // Active hours for the module (24-hour format)
     activeHoursEnd: 22,
     activeDays: [0, 1, 2, 3, 4, 5, 6], // Active days of the week (0 = Sunday, 6 = Saturday)
     updateFrequency: 30, // Update frequency in minutes
-    showHeadSign: true, // If true: shows "Number + Name". If false: shows "Number".
-    showTime: true // If true: shows absolute time (e.g. 12:45pm) next to minutes.
+    showHeadSign: false, // If true: shows "Number + Name". If false: shows "Number".
+    showTime: false // If true: shows absolute time (e.g. 12:45pm) next to minutes.
   },
 
   getStyles() {
@@ -22,7 +22,6 @@ Module.register("MMM-PublicTransit", {
   /**
    * Pseudo-constructor for our module. Initialize stuff here.
    */
-  
   start() {
     this.busSchedule = [{ route_short_name: "Loading...", departure_time: Date.now() / 1000 + 60, trip_headsign: "" }];
 
@@ -67,7 +66,7 @@ Module.register("MMM-PublicTransit", {
     busTimesContainer.style.flexGrow = "1"; // Allow bus times to take up remaining space
 
     if (!this.config.apiKey) {
-      busTimesContainer.innerHTML = "Falta API Key";
+      busTimesContainer.innerHTML = "API Key Required";
       container.appendChild(busTimesContainer);
       return container; // Return early
     }
